@@ -7,14 +7,22 @@ import { QuickLinks } from "@/components/QuickLinks";
 import { Bell, Calendar, Palette, FileText, Image, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.jpg";
+import moment1 from "@/assets/moment-1.jpg";
+import moment2 from "@/assets/moment-2.jpg";
+import moment3 from "@/assets/moment-3.jpg";
+import moment4 from "@/assets/moment-4.jpg";
+import moment5 from "@/assets/moment-5.jpg";
+import moment6 from "@/assets/moment-6.jpg";
 
 const Index = () => {
+  const momentImages = [moment1, moment2, moment3, moment4, moment5, moment6];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Banner */}
-      <section className="relative h-[75vh] overflow-hidden">
+      <section className="relative h-[75vh] overflow-hidden mt-16">
         <img
           src={heroBanner}
           alt="Sinyar Hub"
@@ -51,11 +59,17 @@ const Index = () => {
               icon={Image}
             >
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
+                {momentImages.map((img, i) => (
                   <div
                     key={i}
-                    className="aspect-square rounded-lg bg-muted/50 border border-border/30 hover:scale-105 transition-transform duration-200 cursor-pointer"
-                  />
+                    className="aspect-square rounded-lg overflow-hidden border border-border/30 hover:scale-105 transition-transform duration-200 cursor-pointer"
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Moment ${i + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 ))}
               </div>
             </DashboardCard>
