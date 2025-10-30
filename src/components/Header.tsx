@@ -1,37 +1,63 @@
-import { Search, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { useState, useEffect } from "react";
 import sinyarLogo from "@/assets/sinyar-logo.png";
 
 export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+    <header 
+      className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-sm' : 'bg-white'
+      }`}
+    >
       <div className="container flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <img src={sinyarLogo} alt="Sinyar High Standard Hospitality" className="h-12" />
-          <div className="hidden sm:block text-sm text-muted-foreground border-l pl-3 ml-1">
-            Hub
-          </div>
+        <div className="flex items-center">
+          <img src={sinyarLogo} alt="Sinyar High Standard Hospitality" className="h-10" />
         </div>
 
-        {/* Search Bar */}
-        <div className="flex-1 max-w-md mx-6 hidden md:block">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search announcements, events, resources..."
-              className="pl-10 bg-muted/50 border-border/50"
-            />
-          </div>
-        </div>
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          <a 
+            href="#home" 
+            className="text-sm font-medium text-[#172938] hover:text-[#172938]/70 transition-colors uppercase tracking-wide"
+          >
+            HOME
+          </a>
+          <a 
+            href="#whats-on" 
+            className="text-sm font-medium text-[#172938] hover:text-[#172938]/70 transition-colors uppercase tracking-wide"
+          >
+            WHAT'S ON
+          </a>
+          <a 
+            href="#brand" 
+            className="text-sm font-medium text-[#172938] hover:text-[#172938]/70 transition-colors uppercase tracking-wide"
+          >
+            BRAND IDENTITY & CORPORATE STANDARDS
+          </a>
+          <a 
+            href="#quick-links" 
+            className="text-sm font-medium text-[#172938] hover:text-[#172938]/70 transition-colors uppercase tracking-wide"
+          >
+            QUICK LINKS
+          </a>
+        </nav>
 
-        {/* AI Copilot Button */}
-        <Button variant="default" size="sm" className="gap-2">
-          <Sparkles className="h-4 w-4" />
-          <span className="hidden sm:inline">AI Copilot</span>
-        </Button>
+        {/* Search Icon */}
+        <button className="flex items-center justify-center h-8 w-8 hover:bg-gray-100 rounded-full transition-colors">
+          <Search className="h-4 w-4 text-[#172938]" />
+        </button>
       </div>
     </header>
   );
