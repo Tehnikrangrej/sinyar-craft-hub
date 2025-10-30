@@ -14,7 +14,7 @@ const Index = () => {
       <Header />
       
       {/* Hero Banner */}
-      <section className="relative h-64 overflow-hidden">
+      <section className="relative h-[75vh] overflow-hidden">
         <img
           src={heroBanner}
           alt="Sinyar Hub"

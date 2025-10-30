@@ -1,16 +1,15 @@
 import { Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import sinyarLogo from "@/assets/sinyar-logo.png";
 
 export const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
       <div className="container flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            SINYAR
-          </div>
+        <div className="flex items-center gap-3">
+          <img src={sinyarLogo} alt="Sinyar High Standard Hospitality" className="h-12" />
           <div className="hidden sm:block text-sm text-muted-foreground border-l pl-3 ml-1">
             Hub
           </div>
